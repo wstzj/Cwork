@@ -1,0 +1,3 @@
+C:/Users/tangz/CLionProjects/packag/cmake-build-debug/CMakeFiles/packag.dir
+C:/Users/tangz/CLionProjects/packag/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tangz/CLionProjects/packag/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/tangz/CLionProjects/packag/Contacts.h
+stdio.h
+-
+malloc.h
+-
+string.h
+-
+time.h
+-
+
+C:/Users/tangz/CLionProjects/packag/main.c
+Contacts.h
+C:/Users/tangz/CLionProjects/packag/Contacts.h
+
