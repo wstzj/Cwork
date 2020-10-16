@@ -107,17 +107,19 @@ void __attribute__((constructor)) function(void) {
 }
 
 
-void insert(const int x, binaryTree *t) {
+binaryTree *insert(const int x, binaryTree *t) {
 
     if (t == NULL) {
-        binaryTree *p = (binaryTree *) malloc(sizeof(binaryTree));
+        binaryTree *p = NULL;
+        t = p = (binaryTree *) malloc(sizeof(binaryTree));
         p->LeftNode = p->RightNode = NULL;
         p->num = x;
     } else if (x < t->num)
-        insert(x, t->LeftNode);
+        t->LeftNode = insert(x, t->LeftNode);
     else if (t->num < x)
-        insert(x, t->RightNode);
-    else;
+        t->RightNode = insert(x, t->RightNode);
+    return t;
+
 }
 
 void pre_order(binaryTree *t) {
@@ -148,7 +150,7 @@ void pre_order_loop(binaryTree *t) {
     if (t == NULL)
         return;
     stackNode.push(t);
-    while (!stackNode.isEmpty()) {
+    while (stackNode.isEmpty()) {
         binaryTree *p = stackNode.getTop();
         stackNode.pop();
         printf("%d\n", p->num);
@@ -169,10 +171,10 @@ void mid_order_loop(binaryTree *t) {
         stackNode.push(p);
         p = p->LeftNode;
     }
-    while (!stackNode.isEmpty()) {
+    while (stackNode.isEmpty()) {
         binaryTree *q = stackNode.getTop();
         stackNode.pop();
-        printf("%d", q->num);
+        printf("%d\n", q->num);
         q = q->RightNode;
         while (q) {
             stackNode.push(q);
@@ -192,10 +194,10 @@ void post_order_loop(binaryTree *t) {
         else
             p = p->RightNode;
     }
-    while (!stackNode.isEmpty()) {
+    while (stackNode.isEmpty()) {
         binaryTree *q = stackNode.getTop();
         stackNode.pop();
-        printf("%d", q->num);
+        printf("%d\n", q->num);
         if (!stackNode.isEmpty() && q == stackNode.getTop()->LeftNode) {
             q = stackNode.getTop()->RightNode;
             while(q){
